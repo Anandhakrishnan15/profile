@@ -1,9 +1,9 @@
 const User = require("../module/user-module")
-<<<<<<< HEAD
+
 const bcript = require("bcrypt");
-=======
+
 // const bcript = require("bcrypt");
->>>>>>> 59ee2d71d5fc6a3fd55da8f0679a9ab79bf0191b
+
 //* controller
 
 const home = async( req ,res) =>{
@@ -49,7 +49,6 @@ const login = async(req ,res)=>{
     try {
         res.status(200)
         .send("login page")
-<<<<<<< HEAD
         const {email, password} =req.body;
         const userALT = await User.findOne({email: email});
 
@@ -68,11 +67,6 @@ const login = async(req ,res)=>{
                 msg:"entered email or the password is incorrect"
             })
         }
-
-
-
-=======
->>>>>>> 59ee2d71d5fc6a3fd55da8f0679a9ab79bf0191b
     } catch (error) {
         res.status(400)
         .send({msg:"page not found"})
