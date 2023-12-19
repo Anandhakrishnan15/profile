@@ -1,9 +1,5 @@
 const User = require("../module/user-module")
-
 const bcript = require("bcrypt");
-
-// const bcript = require("bcrypt");
-
 //* controller
 
 const home = async( req ,res) =>{
@@ -47,29 +43,23 @@ const reg = async(req ,res)=>{
 }
 const login = async(req ,res)=>{
     try {
-        res.status(200)
-        .send("login page")
-        const {email, password} =req.body;
-        const userALT = await User.findOne({email: email});
+       const {email, password}= req.body;
+       const isemailThere= await User.findOne({email:email});
 
-        if (!emailALT){
-            res.status(400).json({msg:"invalided crudencial"});
-        }
-        const pwdmach = await bcript.compare(password,emailALT.password);
-        if ( pwdmach){
-            res.status(200).json({
-                msg:"login sucessfull",
-                // userID : userALT._id.tosting()
-            })
-        }else{
-            res.status(401)
-            .json({
-                msg:"entered email or the password is incorrect"
-            })
-        }
+       if(!isemailThere){
+        // console.log("invale email");
+        res.status(400).json({msg:"email not there try again"})
+       }
+       const compairPWD = await bcript.compare(password, isemailThere.password)
+       if (compairPWD){
+        res.status(200).json({msg :"login successful"});
+       }
+       else{
+        res.status(401).json({msg:"email or password is in correct"})
+       }
+       
     } catch (error) {
         res.status(400)
-        .send({msg:"page not found"})
         console.log(error);
     }
 }
