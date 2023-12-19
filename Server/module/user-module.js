@@ -27,8 +27,13 @@ const jws = require("jsonwebtoken")
     const user = this;
     if (!user.isModified("password")){
         next()
+<<<<<<< HEAD
     } 
 
+=======
+    }
+        
+>>>>>>> 59ee2d71d5fc6a3fd55da8f0679a9ab79bf0191b
     try
     {
         const salt = await bcript.genSalt(10);
