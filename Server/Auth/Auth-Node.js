@@ -6,7 +6,7 @@ router.route('/').get(conteroler.home)
 
 router.route('/reg').post(conteroler.reg)
 
-router.route('/login').get(conteroler.login)
+router.route('/login').post(conteroler.login)
 
 router.route('/about').get(conteroler.about)
 
