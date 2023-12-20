@@ -41,7 +41,19 @@ const jws = require("jsonwebtoken")
     
 
  })
-
+ userSchema.methods.generateToken = async function(){
+    try {
+      return jws.sign({
+          userid:this._id.toString(),
+          email: this.email,
+          isadmin:this.isadmin,
+      },
+      process.env.JWAT_TOKWEN
+      );
+    } catch (error) {
+      console.error(error);
+    }
+   }
 // define the model or the collection name
 
 const User = new mongoose.model("users", userSchema);

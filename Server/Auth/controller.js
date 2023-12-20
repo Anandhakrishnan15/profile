@@ -33,7 +33,11 @@ const reg = async(req ,res)=>{
             // password:hash_password
         });
    
-        res.status(200).json({msg:userCreated});
+        res.status(200).json({
+            msg:"register sucessfull",
+            token: await usercreate.generateToken(),
+            userId: usercreate._id.toString()
+        });
         // .json({msg:"data inserted"});
     } catch (error) {
         res.status(400)
