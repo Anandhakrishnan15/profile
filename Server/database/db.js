@@ -7,7 +7,12 @@ const db = process.env.URI;
 
 const connectDB = async()=>{
    try {
-    await mongoose.connect(db);
+    await mongoose.connect(db,{
+      // Specify the write concern here
+      writeConcern: {
+         w: 'majority'
+       }
+    });
     console.log ("database connectd")
    } catch (error) {
     console.log("database not connected yet ");
