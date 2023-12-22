@@ -38,9 +38,10 @@ const jws = require("jsonwebtoken")
     catch (error) {  
         next(error)   
     }
-    
-
  })
+userSchema.methods.compairpassowrd =async function(password){
+    return bcript.compare(password, this.password)
+}
  userSchema.methods.generateToken = async function(){
     try {
       return jws.sign({

@@ -13,9 +13,10 @@ const home = async( req ,res) =>{
 }
 const reg = async(req ,res)=>{
     try {
-        console.log(req.body);
-        const data = req.body;
+      
+        
         const {username,email,phone,password} = req.body;
+        // const data = req.body;
 
         const UserExist = await User.findOne({email:email});
         if (UserExist){
@@ -25,7 +26,7 @@ const reg = async(req ,res)=>{
         // const salt = 10;
         // const hash_password = await bcript.hash(password,salt);
 
-        const userCreated = await User.create({
+        const  usercreate = await User.create({
             username,
             email,
             phone,
@@ -54,7 +55,8 @@ const login = async(req ,res)=>{
         // console.log("invale email");
         res.status(400).json({msg:"email not there try again"})
        }
-       const compairPWD = await bcript.compare(password, isemailThere.password)
+    //    const compairPWD = await bcript.compare(password, isemailThere.password)
+       const compairPWD = await isemailThere.compairpassowrd(password);
        if (compairPWD){
         res.status(200).json({msg :"login successful"});
        }
