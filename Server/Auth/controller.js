@@ -13,8 +13,6 @@ const home = async( req ,res) =>{
 }
 const reg = async(req ,res)=>{
     try {
-      
-        
         const {username,email,phone,password} = req.body;
         // const data = req.body;
 
