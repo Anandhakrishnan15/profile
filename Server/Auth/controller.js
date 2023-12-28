@@ -11,7 +11,7 @@ const home = async( req ,res) =>{
         console.log(error);
     }
 }
-const reg = async(req ,res)=>{
+const reg = async(req ,res,next)=>{
     try {
         const {username,email,phone,password} = req.body;
         // const data = req.body;
@@ -39,9 +39,10 @@ const reg = async(req ,res)=>{
         });
         // .json({msg:"data inserted"});
     } catch (error) {
-        res.status(400)
-        .json({msg:"page no found"})
-        console.log(error);
+        // res.status(400)
+        // .json({msg:"page no found"})
+        // console.log(error);
+        next(error)
     }
 }
 const login = async(req ,res)=>{

@@ -4,11 +4,11 @@ const validater = (schema)=> async(req,res,next)=>{
         const parceBody = await schema.parseAsync(req.body);
         req.body = parceBody;
         next();
-    } catch (error) {
-        const msg =  error.issues[0].message;
+    } catch (err) {
+       
+        const msg=  err.issues[0].message;
         console.log(msg);
-        res.status(400).json({ msg : msg});
-        
+        res.status(400).json({ msg : msg});   
     }
 
 }
