@@ -38,14 +38,15 @@ const reg = async(req ,res,next)=>{
             userId: usercreate._id.toString()
         });
         // .json({msg:"data inserted"});
-    } catch (error) {
+    } catch(error){
         // res.status(400)
         // .json({msg:"page no found"})
-        // console.log(error);
+        // console.log(err);
         next(error)
+  
     }
 }
-const login = async(req ,res)=>{
+const login = async(req ,res ,next)=>{
     try {
        const {email, password}= req.body;
        const isemailThere= await User.findOne({email:email});
@@ -64,8 +65,9 @@ const login = async(req ,res)=>{
        }
        
     } catch (error) {
-        res.status(400)
-        console.log(error);
+        // res.status(400)
+        // console.log(error);
+        next(error)
     }
 }
 const about = async(req ,res)=>{

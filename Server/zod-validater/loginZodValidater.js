@@ -1,18 +1,18 @@
 const {z} = require("zod");
 
-const loginValidater = z.object ({
+const loginValidater = z.object({
     email: z
     .string({required_error: "email reqire"})
     .trim()
     .email({ message:"email is in vallid"})
     .min(3,{message:"enter proper email"})
-    .max (50,{message :"name must not bemore  than 50 letters"}),
+    .max (50,{message :"plz enter a proper name"}),
 
     password: z
-    .string({required_error: "namenis reqire"})
+    .string({required_error: "enter the PWD"})
     .trim()
-    .min(8,{message:"npwd too short"})
-    .max (50,{message :"name must not bemore  than 50 letters"}),
+    .min(8,{message:"pwd is wrong"})
+    .max (50,{message :"entwewd proper pwd"}),
 
 })
 

@@ -21,7 +21,7 @@ const signUpVAlidater = z.object({
     .max (12,{message :"name must not bemore  than 50 letters"}),
 
     password: z
-    .string({required_error: "namenis reqire"})
+    .string({required_error: "pwd is reqire"})
     .trim()
     .min(8,{message:"npwd too short"})
     .max (50,{message :"name must not bemore  than 50 letters"}),

@@ -5,11 +5,12 @@ const validater = (schema)=> async(req,res,next)=>{
         req.body = parceBody;
         next();
     } catch (err) {
-       
-        const msg=  err.issues[0].message;
-        console.log(msg);
-        res.status(400).json({ msg : msg});   
+        const statusCode = 402;
+        const message=  err.issues[0].message;
+        const error = {
+       statusCode,message
     }
-
+        return next(error)
+}
 }
 module.exports = validater;
