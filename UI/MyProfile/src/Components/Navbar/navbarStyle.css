@@ -1,0 +1,24 @@
+a{
+    color: white;
+    text-decoration: none;
+}
+a.active,a:hover{
+    color: red;
+}
+
+.navbarcontainer{
+    width: 100%;
+    background-color:gray;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.listholder ul{
+    display: flex;
+    padding: 10px;
+    list-style: none;
+}
+.listholder ul li{
+    margin: 10px;
+}
