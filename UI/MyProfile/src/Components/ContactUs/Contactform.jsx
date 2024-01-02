@@ -8,7 +8,7 @@ const Contactform = () => {
     })
 
     const messagesubmit =(e)=>{
-        console.log(e);
+        // console.log(e);
         let name = e.target.name;
         let value = e.target.value;
 
@@ -17,6 +17,8 @@ const Contactform = () => {
             [name]:value
         })
     }
+
+    // submit function 
     const msgSubmited=(e)=>{
         e.preventDefault();
         console.log(msg);
@@ -56,7 +58,7 @@ const Contactform = () => {
             </div>
             <div className="contactinput">
                 <label>message</label>
-                <input type="text"
+                <textarea type="text"
                 placeholder="enter your message over here"
                 required
                 name="request"
@@ -64,7 +66,6 @@ const Contactform = () => {
                 autoComplete="off"
                 value ={msg.request}
                 onChange={messagesubmit}
-
                 />
             </div>
             <div className="contactUsSubmitButton">

@@ -6,6 +6,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/login";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbarholde";
+import Erroe404 from "./Pages/404/Erroe404";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Erroe404/>}/>
 
       </Routes>
     </>

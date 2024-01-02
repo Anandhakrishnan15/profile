@@ -1,3 +1,7 @@
 h1{
     color:  red;
 }
+textarea{
+    width: 50%;
+    height: 50px;
+}

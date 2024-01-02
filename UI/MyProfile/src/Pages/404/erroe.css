@@ -1,0 +1,92 @@
+.erroheading {
+    text-align: center;
+    padding: 0;
+    width: 100%;
+   
+    
+}
+.erroheading h1{
+    text-align: center;
+    font-size: 200px;
+    padding: 0%;
+    line-height: 0.9;
+    animation: animate 10s ease-in-out infinite;
+    background: -webkit-linear-gradient(
+        -60deg,#23a0da,#923ce2,#ba1ada,#d41941,#1e3fd3 ,#9013ca);
+   background-clip: text;
+  -webkit-text-fill-color: transparent;
+    background-size: 500%;
+
+    position: relative;
+}
+
+@keyframes animate{
+    0%{
+        background-position: 0 0;
+    }
+    25%{
+        background-position: 100% 0;
+    }
+    50%{
+        background-position: 100% 100%;
+    }
+    75%{
+        background-position: 0 100%;
+    }
+    100%{
+        background-position: 0 0;
+    }
+}
+.erroheading p{
+    font-size: 30px;
+    color: blue;
+}
+.errPageContainer{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.erroePgae{
+    text-align: center;
+    width: 40%;
+}
+.errorbuts{
+    display: flex;
+    justify-content: space-evenly;
+}
+.errorbuts button{
+    width: 100px;
+    margin: 10px;
+    font-size: 10px;
+    font-style:italic;
+}
+#retHome ,#reprtbut{
+    padding: 10px;
+    color: rgb(3, 3, 3);
+    background-color:rgba(230, 225, 225, 0.514);
+    border:1px solid purple;
+    border-radius: 10px;
+    transition: .3s ease-in;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+#reprtbut{
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    font-weight:50px;
+
+}
+#reprtbut:hover{
+    color: rgb(3, 3, 3);
+    background-color:rgba(230, 225, 225, 0.514);
+    border:1px solid purple;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+#retHome:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    font-weight:50px;
+}
