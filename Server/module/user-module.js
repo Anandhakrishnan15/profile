@@ -57,6 +57,6 @@ userSchema.methods.compairpassowrd =async function(password){
    }
 // define the model or the collection name
 
-const User = new mongoose.model("users", userSchema);
+const User = new mongoose.model("registers", userSchema);
 
 module.exports= User;

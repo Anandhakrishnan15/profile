@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./RegAndLog.css";
+import { useNavigate } from "react-router-dom";
+
 const SIgnup = () => {
   const [user, setUser] = useState({
     username: "",
@@ -17,10 +19,32 @@ const SIgnup = () => {
       [name]: value,
     });
   };
-const regdubmit=(e)=>{
-  e.preventDefault();
-  console.log(user);
-}
+  const navgate = useNavigate();
+  const regdubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const connectserver = await fetch(`http://localhost:3331/reg`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (connectserver.ok) {
+        setUser({
+          username: "",
+          email: "",
+          phone: "",
+          password: "",
+        });
+      }
+      navgate("/login");
+      console.log(connectserver);
+    } catch (error) {
+      console.log("erro", error);
+    }
+  };
   return (
     <>
       <div className="formcontainer">

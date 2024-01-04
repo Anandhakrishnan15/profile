@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./RegAndLog.css";
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
 const [user,setUser] = useState({
     email:"",
@@ -16,10 +17,30 @@ const loginHandler = (e)=>{
     [name]:value,
   })
 }
-
-const loginSubmt = (e)=>{
+const navgate = useNavigate()
+const loginSubmt =async(e)=>{
     e.preventDefault()
-    console.log(user)
+    try {
+        const loginConnect = await fetch(`http://localhost:3331/login`,{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(user)
+        })
+        if(loginConnect.ok){
+            setUser({
+                email:"",
+                password:""
+            })
+        }
+        navgate("/")
+        console.log(user);
+
+        
+    } catch (error) {
+        
+    }
 }
 
 
