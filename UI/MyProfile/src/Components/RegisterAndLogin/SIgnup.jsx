@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./RegAndLog.css";
 import { useNavigate } from "react-router-dom";
+import { useToken } from "../../Storage/LSToken";
 
 const SIgnup = () => {
   const [user, setUser] = useState({
@@ -20,6 +21,7 @@ const SIgnup = () => {
     });
   };
   const navgate = useNavigate();
+  const {TokenStoreLS} = useToken()
   const regdubmit = async (e) => {
     e.preventDefault();
     try {
@@ -32,6 +34,9 @@ const SIgnup = () => {
       });
 
       if (connectserver.ok) {
+        const res_data = await connectserver.json();
+      console.log(res_data);
+        TokenStoreLS(res_data.token)
         setUser({
           username: "",
           email: "",
@@ -39,9 +44,11 @@ const SIgnup = () => {
           password: "",
         });
       }
-      navgate("/login");
+    alert("registeration is sucessfull")
       console.log(connectserver);
+      navgate("/login");
     } catch (error) {
+      alert("some error in registering")
       console.log("erro", error);
     }
   };
