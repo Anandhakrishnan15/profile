@@ -7,6 +7,7 @@ import Login from "./Pages/login";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbarholde";
 import Erroe404 from "./Pages/404/Erroe404";
+import LogOut from "./Pages/LogOut";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact/>} />
+        <Route path="/logout" element={<LogOut />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Erroe404/>}/>

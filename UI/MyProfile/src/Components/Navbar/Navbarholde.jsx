@@ -1,7 +1,9 @@
 import React from "react";
 import { Link,NavLink } from "react-router-dom";
 import "./navbarStyle.css"
+import { useToken } from "../../Storage/LSToken";
 const Navbarholde = () => {
+  const {isLogedIn} = useToken()
   return (
     <>
     <header>
@@ -14,8 +16,14 @@ const Navbarholde = () => {
                     <NavLink to="/"><li>Home</li></NavLink>
                     <NavLink to="/about"><li>About</li></NavLink>
                     <NavLink to="/contact"><li>Contact</li></NavLink>
-                    <NavLink to="/register"><li>Register</li></NavLink>
+                   {isLogedIn ? (  <NavLink to="/logout"><li>Logout</li></NavLink>):(
+                    <>
+                      <NavLink to="/register"><li>Register</li></NavLink>
                     <NavLink to="/login"><li>Login</li></NavLink>
+                    </>
+                   )}
+                  
+                  
                 </ul>
             </div>
 

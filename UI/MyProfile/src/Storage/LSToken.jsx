@@ -1,13 +1,20 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 // we are going to use context API
 export const TokenGEN =createContext();
 
 export const TokenProvider = ({children}) =>{
+    const [token ,setToken] = useState(localStorage.getItem("Token"))
     const TokenStoreLS =(serverToken) =>{
         return localStorage.setItem("Token",serverToken);
     }
-    return <TokenGEN.Provider value={{TokenStoreLS}}>
+    let isLogedIn = !!token;
+    // console.log("logedin", isLogedIn);
+    const userLogOut = ()=>{
+        setToken("");
+        return localStorage.removeItem("Token")
+    }
+    return <TokenGEN.Provider value={{isLogedIn,TokenStoreLS,userLogOut}}>
     {children}
     </TokenGEN.Provider>
 }
