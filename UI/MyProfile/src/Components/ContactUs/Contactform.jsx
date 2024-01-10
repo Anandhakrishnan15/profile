@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import "./contact.css";
+import { useToken } from "../../Storage/LSToken";
 const Contactform = () => {
     const [msg ,setMsg] = useState({
         username:"",
         email:"",
         request:""
     })
+    const [useData , setUseData]= useState(true)
+    const{user}= useToken()
+    if(useData && user){
+      setMsg({
+        username:user.userData.username,
+        email:user.userData.email,
+        request: "",
+      })
+      setUseData(false)
+    }
 
     const messagesubmit =(e)=>{
         // console.log(e);

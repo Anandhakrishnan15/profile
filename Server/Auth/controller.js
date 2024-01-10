@@ -85,6 +85,18 @@ const about = async (req, res) => {
         console.log(error);
     }
 }
+//to send user data
 
+const user = async ( req,res,next)=>{
+try {
+    const userData = req.user;
+    // console.log(userData);
+    res.status(200).json({userData})
+} catch (error) {
+    res.status(400)
+    .send({ msg: "page not found" })
+console.log(error);
+}
 
-module.exports = { home, reg, login, about }
+}
+module.exports = { home, reg, login, about,user }

@@ -9,7 +9,7 @@ const Login = () => {
   });
 
   const loginHandler = (e) => {
-    console.log(e);
+    // console.log(e);
     let name = e.target.name;
     let value = e.target.value;
 
@@ -32,7 +32,7 @@ const Login = () => {
       });
       if (loginConnect.ok) {
         const res_data= await loginConnect.json();
-        console.log(res_data);
+        // console.log(res_data);
         TokenStoreLS(res_data.token)
         setUser({
           email: "",
@@ -40,7 +40,7 @@ const Login = () => {
         });
       }
       alert("login is sucessfull")
-      console.log(loginConnect);
+      console.log("login Sucessfull");
       navgate("/");
     } catch (error) {
       alert("some error in Login")

@@ -11,7 +11,7 @@ const SIgnup = () => {
     password: "",
   });
   const inputHandler = (e) => {
-    console.log(e);
+    // console.log(e);
     let name = e.target.name;
     let value = e.target.value;
 
@@ -35,7 +35,7 @@ const SIgnup = () => {
 
       if (connectserver.ok) {
         const res_data = await connectserver.json();
-      console.log(res_data);
+      // console.log(res_data);
         TokenStoreLS(res_data.token)
         setUser({
           username: "",
@@ -45,11 +45,11 @@ const SIgnup = () => {
         });
       }
     alert("registeration is sucessfull")
-      console.log(connectserver);
+      console.log("reg sucessfull");
       navgate("/login");
     } catch (error) {
       alert("some error in registering")
-      console.log("erro", error);
+      console.log("error", error);
     }
   };
   return (
