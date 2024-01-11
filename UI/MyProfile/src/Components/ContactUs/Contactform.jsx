@@ -11,8 +11,8 @@ const Contactform = () => {
     const{user}= useToken()
     if(useData && user){
       setMsg({
-        username:user.userData.username,
-        email:user.userData.email,
+        username:user.username,
+        email:user.email,
         request: "",
       })
       setUseData(false)

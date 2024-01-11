@@ -26,7 +26,7 @@ export const TokenProvider = ({ children }) => {
       if (responces.ok) {
         const data = await responces.json();
         // console.log('user data', data);
-        setUser(data);
+        setUser(data.userData);
       }
     } catch (error) {
       console.log("Autho error found", error);
