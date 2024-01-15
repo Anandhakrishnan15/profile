@@ -16,5 +16,5 @@ const contactsmsg = new Schema({
         require: true,
     }
 })
-const contactmodel = new model("mail-req", contactsmsg)
+const contactmodel = new model("mailreq", contactsmsg)
 module.exports = contactmodel
