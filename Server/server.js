@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require ("cors")
 const mongoose = require("mongoose");
 const router = require("./Auth/Auth-Node");
+const emplRouter = require("./Auth/Employee")
 const { PORT } = require("./config/Port");
 const connectDB = require("./database/db");
 const errorHandeler = require("./Middleware-validater/errorHandeler")
@@ -19,6 +20,7 @@ app.use(express.json());
 
 // const connectDB = require('./database/db')
 app.use("/", router);
+app.use('/api',emplRouter )
 app.use(errorHandeler);
 connectDB().then(() => {
     app.listen(PORT, () => {
