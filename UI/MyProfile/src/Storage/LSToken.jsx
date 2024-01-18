@@ -6,6 +6,7 @@ export const TokenGEN = createContext();
 export const TokenProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("Token"));
   const [user, setUser] = useState("");
+  const [empfetch, setEmpfetch] = useState("");
   const TokenStoreLS = (serverToken) => {
     return localStorage.setItem("Token", serverToken);
   };
@@ -17,7 +18,7 @@ export const TokenProvider = ({ children }) => {
   };
   const userAuth = async () => {
     try {
-      const responces= await fetch("http://localhost:3331/user", {
+      const responces = await fetch("http://localhost:3331/user", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -33,12 +34,31 @@ export const TokenProvider = ({ children }) => {
     }
   };
 
+  // to get Employess data
+  const empData = async () => {
+    try {
+      const responces = await fetch("http://localhost:3331/api/employess", {
+        method: "GET",
+      });
+      if (responces.ok) {
+        const employDAta = await responces.json();
+        setEmpfetch(employDAta);
+        console.log(employDAta);
+      }
+    } catch (error) {
+      console.log("erroe to fetc emp data");
+    }
+  };
+
   useEffect(() => {
+    empData();
     userAuth();
   }, []);
 
   return (
-    <TokenGEN.Provider value={{ isLogedIn, TokenStoreLS, userLogOut, user}}>
+    <TokenGEN.Provider
+      value={{ isLogedIn, TokenStoreLS, userLogOut, user,empfetch }}
+    >
       {children}
     </TokenGEN.Provider>
   );

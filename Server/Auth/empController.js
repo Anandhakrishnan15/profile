@@ -7,7 +7,7 @@ const Empl = async(req,res,next)=>{
             res.status(404).json("there is a error");
             return;
         }
-    res.status(200).json({msg :findemp})
+    res.status(200).json(findemp)
     } catch (error) {
         console.log("Error", error);
         
