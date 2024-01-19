@@ -6,7 +6,7 @@ export const TokenGEN = createContext();
 export const TokenProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("Token"));
   const [user, setUser] = useState("");
-  const [empfetch, setEmpfetch] = useState("");
+  const [empfetch, setEmpfetch] = useState([]);
   const TokenStoreLS = (serverToken) => {
     return localStorage.setItem("Token", serverToken);
   };

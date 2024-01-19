@@ -1,6 +1,5 @@
 import React from 'react'
 import EmplCard from '../Components/Employes/EmplCard'
-
 const Employess = () => {
   return (
     <div>

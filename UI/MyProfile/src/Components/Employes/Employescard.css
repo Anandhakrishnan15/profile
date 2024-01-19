@@ -1,0 +1,16 @@
+.employessCardContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.employeCard{
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid black;
+}
+.EmpAddress{
+    display: flex;
+}
+.employDitails{
+    margin: 10px;
+}
