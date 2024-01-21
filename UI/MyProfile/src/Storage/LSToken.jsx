@@ -43,7 +43,7 @@ export const TokenProvider = ({ children }) => {
       if (responces.ok) {
         const employDAta = await responces.json();
         setEmpfetch(employDAta);
-        console.log(employDAta);
+        // console.log(employDAta);
       }
     } catch (error) {
       console.log("erroe to fetc emp data");

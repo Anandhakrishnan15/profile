@@ -32,10 +32,12 @@ const SIgnup = () => {
         },
         body: JSON.stringify(user),
       });
+      // console.log("reg sucessfull");
+      const res_data = await connectserver.json();
+      console.log(res_data.message);
 
       if (connectserver.ok) {
-        const res_data = await connectserver.json();
-      // console.log(res_data);
+       
         TokenStoreLS(res_data.token)
         setUser({
           username: "",
@@ -43,10 +45,13 @@ const SIgnup = () => {
           phone: "",
           password: "",
         });
+        alert("registeration is sucessfull")
+        navgate("/login");
+      }else{
+        alert(res_data.message)
       }
-    alert("registeration is sucessfull")
-      console.log("reg sucessfull");
-      navgate("/login");
+  
+   
     } catch (error) {
       alert("some error in registering")
       console.log("error", error);

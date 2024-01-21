@@ -20,7 +20,7 @@ const reg = async (req, res, next) => {
 
         const UserExist = await User.findOne({ email: email });
         if (UserExist) {
-            return res.status(400).json({ msg: "emai aready exist" })
+            return res.status(400).json({ message: "emai aready exist" })
         }
         //this is hashig the password
         // const salt = 10;
@@ -55,18 +55,18 @@ const login = async (req, res) => {
 
         if (!isemailThere) {
             // console.log("invale email");
-            res.status(400).json({ msg: "email not there try again" })
+            res.status(400).json({message: "email not there try again" })
         }
         //    const compairPWD = await bcript.compare(password, isemailThere.password)
         const compairPWD = await isemailThere.compairpassowrd(password);
         if (compairPWD) {
-            res.status(200).json({msg:"login successful",
+            res.status(200).json({message:"login successful",
             token: await isemailThere.generateToken(),
             userId: isemailThere._id.toString()
         });
         }
         else {
-            res.status(401).json({ msg: "email or password is in correct" })
+            res.status(401).json({message: "email or password is in correct" })
         }
 
     } catch (error) {
@@ -81,7 +81,7 @@ const about = async (req, res) => {
             .send("about page")
     } catch (error) {
         res.status(400)
-            .send({ msg: "page not found" })
+            .send({message: "page not found" })
         console.log(error);
     }
 }
@@ -94,7 +94,7 @@ try {
     res.status(200).json({userData})
 } catch (error) {
     res.status(400)
-    .send({ msg: "page not found" })
+    .send({message: "page not found" })
 console.log(error);
 }
 
