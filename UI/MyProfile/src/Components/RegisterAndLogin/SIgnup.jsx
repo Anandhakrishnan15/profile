@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./RegAndLog.css";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../Storage/LSToken";
+import { toast } from "react-toastify";
 
 const SIgnup = () => {
   const [user, setUser] = useState({
@@ -45,10 +46,10 @@ const SIgnup = () => {
           phone: "",
           password: "",
         });
-        alert("registeration is sucessfull")
+       toast.success("registeration is sucessfull")
         navgate("/login");
       }else{
-        alert(res_data.message)
+       toast.error(res_data.message ? res_data.message : res_data.required_error)
       }
   
    

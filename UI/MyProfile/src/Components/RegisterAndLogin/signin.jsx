@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./RegAndLog.css";
 import { useNavigate } from "react-router-dom";
 import {useToken} from "../../Storage/LSToken";
+import { toast } from "react-toastify";
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
@@ -30,18 +31,22 @@ const Login = () => {
         },
         body:JSON.stringify(user),
       });
+      const res_data= await loginConnect.json();
+      console.log(res_data.message);
       if (loginConnect.ok) {
-        const res_data= await loginConnect.json();
-        // console.log(res_data);
+       
         TokenStoreLS(res_data.token)
         setUser({
           email: "",
           password: "",
         });
+       toast.success("login is sucessfull")
+        // console.log("login Sucessfull");
+        navgate("/");
+      }else{
+       toast.error(res_data.message)
       }
-      alert("login is sucessfull")
-      console.log("login Sucessfull");
-      navgate("/");
+    
     } catch (error) {
       alert("some error in Login")
       console.log("erro", error);

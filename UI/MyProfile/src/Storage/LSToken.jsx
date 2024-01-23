@@ -8,6 +8,7 @@ export const TokenProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [empfetch, setEmpfetch] = useState([]);
   const TokenStoreLS = (serverToken) => {
+    setToken(serverToken)
     return localStorage.setItem("Token", serverToken);
   };
   let isLogedIn = !!token;
