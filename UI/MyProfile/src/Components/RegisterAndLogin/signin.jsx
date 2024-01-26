@@ -20,7 +20,7 @@ const Login = () => {
     });
   };
   const navgate = useNavigate();
-  const {TokenStoreLS} = useToken()
+  const {TokenStoreLS,refreshPage} = useToken()
   const loginSubmt = async (e) => {
     e.preventDefault();
     try {
@@ -40,9 +40,11 @@ const Login = () => {
           email: "",
           password: "",
         });
-       toast.success("login is sucessfull")
-        // console.log("login Sucessfull");
-        navgate("/");
+      
+          toast.success("Login is successful");
+         navgate("/"); // Navigate to the home page after the page is reloade
+         refreshPage(); // Refresh the 
+       
       }else{
        toast.error(res_data.message)
       }

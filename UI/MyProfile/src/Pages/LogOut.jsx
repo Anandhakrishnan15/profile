@@ -2,9 +2,10 @@ import { useEffect } from "react"
 import { Navigate } from "react-router-dom";
 import { useToken } from "../Storage/LSToken";
 const LogOut = ()=>{
-    const  {userLogOut} = useToken()
+    const  {userLogOut, refreshPage} = useToken()
     useEffect(()=>{
         userLogOut();
+        refreshPage();
     },[userLogOut])
 
     return <Navigate to="/login"/>

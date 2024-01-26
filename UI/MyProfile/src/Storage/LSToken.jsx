@@ -1,12 +1,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 // we are going to use context API
 export const TokenGEN = createContext();
 
 export const TokenProvider = ({ children }) => {
+// const navgate = useNavigate()
   const [token, setToken] = useState(localStorage.getItem("Token"));
   const [user, setUser] = useState("");
   const [empfetch, setEmpfetch] = useState([]);
+  const [pageReloaded, setPageReloaded] = useState(false); // Track reload status
   const TokenStoreLS = (serverToken) => {
     setToken(serverToken)
     return localStorage.setItem("Token", serverToken);
@@ -47,7 +52,15 @@ export const TokenProvider = ({ children }) => {
         // console.log(employDAta);
       }
     } catch (error) {
-      console.log("erroe to fetc emp data");
+      console.log("erroe to fetc emp data",error);
+    }
+  };
+
+  const refreshPage = () => {
+    if (!pageReloaded) {
+          window.location.reload();
+          setPageReloaded(true);
+        // Delay the success toast by 1000 milliseconds (1 second)
     }
   };
 
@@ -58,7 +71,7 @@ export const TokenProvider = ({ children }) => {
 
   return (
     <TokenGEN.Provider
-      value={{ isLogedIn, TokenStoreLS, userLogOut, user,empfetch }}
+      value={{ isLogedIn, TokenStoreLS, userLogOut, user,empfetch, refreshPage,}}
     >
       {children}
     </TokenGEN.Provider>

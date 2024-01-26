@@ -3,6 +3,8 @@ import "./RegAndLog.css";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../Storage/LSToken";
 import { toast } from "react-toastify";
+// import refreshPage from "../Refresh";
+// import axios from "axios"; // Import Axios
 
 const SIgnup = () => {
   const [user, setUser] = useState({
@@ -22,10 +24,11 @@ const SIgnup = () => {
     });
   };
   const navgate = useNavigate();
-  const {TokenStoreLS} = useToken()
+  const {TokenStoreLS,refreshPage} = useToken()
   const regdubmit = async (e) => {
     e.preventDefault();
     try {
+      // const res_data =connectserver.data;
       const connectserver = await fetch(`http://localhost:3331/reg`, {
         method: "POST",
         headers: {
@@ -33,9 +36,9 @@ const SIgnup = () => {
         },
         body: JSON.stringify(user),
       });
-      // console.log("reg sucessfull");
+      console.log("reg sucessfull");
       const res_data = await connectserver.json();
-      console.log(res_data.message);
+      console.log(res_data);
 
       if (connectserver.ok) {
        
@@ -46,15 +49,14 @@ const SIgnup = () => {
           phone: "",
           password: "",
         });
-       toast.success("registeration is sucessfull")
-        navgate("/login");
+        toast.success("Login is successful");
+        refreshPage(); // Refresh the 
       }else{
        toast.error(res_data.message ? res_data.message : res_data.required_error)
       }
   
-   
     } catch (error) {
-      alert("some error in registering")
+      alert("Some error occurred during registration");
       console.log("error", error);
     }
   };
