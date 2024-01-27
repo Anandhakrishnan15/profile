@@ -50,7 +50,8 @@ const SIgnup = () => {
           password: "",
         });
         toast.success("Login is successful");
-        refreshPage(); // Refresh the 
+        // refreshPage(); // Refresh the 
+        navgate("/")
       }else{
        toast.error(res_data.message ? res_data.message : res_data.required_error)
       }

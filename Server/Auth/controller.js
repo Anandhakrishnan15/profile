@@ -92,6 +92,7 @@ try {
     const userData = req.user;
     // console.log(userData);
     res.status(200).json({userData})
+    next()
 } catch (error) {
     res.status(400)
     .send({message: "page not found" })

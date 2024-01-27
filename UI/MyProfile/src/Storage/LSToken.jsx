@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
-
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import axios from "axios"
+// import { Link, useNavigate } from "react-router-dom";
+// import { toast } from "react-toastify";
 
 // we are going to use context API
 export const TokenGEN = createContext();
@@ -9,37 +9,46 @@ export const TokenGEN = createContext();
 export const TokenProvider = ({ children }) => {
 // const navgate = useNavigate()
   const [token, setToken] = useState(localStorage.getItem("Token"));
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState('');
   const [empfetch, setEmpfetch] = useState([]);
   const [pageReloaded, setPageReloaded] = useState(false); // Track reload status
   const TokenStoreLS = (serverToken) => {
     setToken(serverToken)
     return localStorage.setItem("Token", serverToken);
+    // userAuth();
   };
   let isLogedIn = !!token;
-  // console.log("logedin", isLogedIn);
+  console.log("logedin", isLogedIn);
   const userLogOut = () => {
     setToken("");
     return localStorage.removeItem("Token");
+    // userAuth();
   };
   const userAuth = async () => {
     try {
-      const responces = await fetch("http://localhost:3331/user", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (responces.ok) {
-        const data = await responces.json();
-        // console.log('user data', data);
-        setUser(data.userData);
-      }
-    } catch (error) {
-      console.log("Autho error found", error);
-    }
-  };
+      const response = await axios.get("http://localhost:3331/user", {
+          // method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        // console.log(response);
 
+      // const responces = await fetch("http://localhost:3331/user", {
+      //   method: "GET",
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // });
+     if (response.status === 200) {
+      const data = response.data;
+      setUser(data.userData);
+    }
+  } catch (error) {
+    // console.log("Auth error found",);
+  }
+  };
+  
   // to get Employess data
   const empData = async () => {
     try {
@@ -67,7 +76,7 @@ export const TokenProvider = ({ children }) => {
   useEffect(() => {
     empData();
     userAuth();
-  }, []);
+  }, [isLogedIn]);
 
   return (
     <TokenGEN.Provider

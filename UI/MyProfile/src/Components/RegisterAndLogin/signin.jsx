@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./RegAndLog.css";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import {useToken} from "../../Storage/LSToken";
 import { toast } from "react-toastify";
 const Login = () => {
@@ -20,7 +20,7 @@ const Login = () => {
     });
   };
   const navgate = useNavigate();
-  const {TokenStoreLS,refreshPage} = useToken()
+  const {TokenStoreLS} = useToken()
   const loginSubmt = async (e) => {
     e.preventDefault();
     try {
@@ -40,10 +40,10 @@ const Login = () => {
           email: "",
           password: "",
         });
-      
           toast.success("Login is successful");
-         navgate("/"); // Navigate to the home page after the page is reloade
-         refreshPage(); // Refresh the 
+        navgate("/"); // Navigate to the home page after the page is reloade
+        // refreshPage(); // Refresh the 
+        
        
       }else{
        toast.error(res_data.message)
