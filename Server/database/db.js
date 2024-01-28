@@ -1,4 +1,4 @@
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
 // const db = "mongodb+srv://anandhakrishnanvellat15:anandhakrishnan@database.qzoeisd.mongodb.net/database?retryWrites=true&w=majority";
