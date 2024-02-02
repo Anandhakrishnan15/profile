@@ -72,7 +72,7 @@ const login = async (req, res) => {
     } catch (error) {
         res.status(400)
         console.log(error);
-        // next(error)
+        next(error)
     }
 }
 const about = async (req, res) => {
